@@ -16,7 +16,7 @@ jobs:
         id: generate-string
         run: |
           str="hogefugapiyo"
-          echo "::add-mask::$str"
+          # echo "::add-mask::$str"
           echo "secret_string=$str" >> $GITHUB_OUTPUT
   check-secret:
     name: Check secret string
