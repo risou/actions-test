@@ -16,7 +16,8 @@ jobs:
         id: generate-string
         run: |
           str="hogefugapiyo"
-          echo "secret_string=${str}" >> $GITHUB_OUTPUT
+          echo "::add-mask::$str"
+          echo "secret_string=$str" >> $GITHUB_OUTPUT
   check-secret:
     name: Check secret string
     runs-on: ubuntu-latest
@@ -25,8 +26,6 @@ jobs:
       - name: Set Env
         run: |
           secret_str=${{ needs.set-secret.outputs.secret_string }}
-          echo "::add-mask::$secret_str"
           echo "SECRET_STRING=$secret_str" >> $GITHUB_ENV
       - name: Check Env
         run: echo $SECRET_STRING
-
