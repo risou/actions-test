@@ -25,6 +25,7 @@ jobs:
     steps:
       - name: Set Env
         run: |
+          echo "::add-mask::$secret_string"
           secret_str=${{ needs.set-secret.outputs.secret_string }}
           echo "::add-mask::$secret_str"
           echo "SECRET_STRING=$secret_str" >> $GITHUB_ENV
