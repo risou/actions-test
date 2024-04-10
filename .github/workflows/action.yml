@@ -14,9 +14,9 @@ jobs:
     steps:
       - name: Generate string
         id: generate-string
-       run: |
-         str="hogefugapiyo"
-         echo "secret_string=${str}" >> $GITHUB_OUTPUT
+        run: |
+          str="hogefugapiyo"
+          echo "secret_string=${str}" >> $GITHUB_OUTPUT
   check-secret:
     name: Check secret string
     runs-on: ubuntu-latest
