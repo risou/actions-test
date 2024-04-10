@@ -25,8 +25,14 @@ jobs:
     steps:
       - name: Set Env
         run: |
-          secret_str=$(echo $needs.set-secret.outputs.secret_string)
+          secret_str=$needs.set-secret.outputs.secret_string
           echo "::add-mask::$secret_str"
           echo "SECRET_STRING=$secret_str" >> $GITHUB_ENV
       - name: Check Env
-        run: echo $SECRET_STRING
+        run: |
+          echo $SECRET_STRING
+          if [ "hogefugapiyo" = $SECRET_STRING ]; then
+            echo "OK"
+          else
+            echo "NG"
+          fi
